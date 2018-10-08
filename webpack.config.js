@@ -21,5 +21,10 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('css/styles.css'),
-  ]
+  ],
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 8080
+  }
 };
