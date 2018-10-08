@@ -1,0 +1,32 @@
+{
+  "name": "parasol-website",
+  "version": "1.0.0",
+  "description": "Parasol Website",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elrakabawi/parasol-website.git"
+  },
+  "keywords": [
+    "Parasol"
+  ],
+  "author": "Lamarkaz [elrakabawi@lamarkaz.com]",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elrakabawi/parasol-website/issues"
+  },
+  "homepage": "https://github.com/elrakabawi/parasol-website#readme",
+  "devDependencies": {
+    "bulma": "^0.7.1",
+    "css-loader": "^1.0.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  }
+}
