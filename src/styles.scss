@@ -29,6 +29,9 @@ $input-shadow: none;
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
 
+// Grid
+@import "../node_modules/bulma/sass/grid/columns.sass";
+
 // Layout
 @import "../node_modules/bulma/sass/layout/hero.sass";
 @import "../node_modules/bulma/sass/layout/_all.sass";
@@ -64,22 +67,72 @@ $input-shadow: none;
   width: 100%;
 }
 
-.navbar-item {
-  border-bottom: white 0px solid;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-  -webkit-transition: width 0.5s;
-  transition: width 0.5s;
+.cool-link {
+  margin-top: 7px;
+  cursor: pointer;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
 }
 
-a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
-  background-color: rgba(255,255,255,0.2);
+.cool-link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: width .3s;
+}
+
+.cool-link:hover::after {
+  width: 100%;
+  //transition: width .3s;
 }
 
 .navbar-burger:hover {
   background-color: rgba(255,255,255, 1);
   color: black;
 }
+
+.particle-background { 
+  background: url(/assets/bg.png) no-repeat center center fixed; 
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+}
+
+.headerText {
+  margin-top: 70px;
+  margin-bottom: 30px;
+  font-size: 22px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.prinText {
+  margin: 35px;
+  font-size: 21px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+}
+
+.rdmore {
+  border-radius: 99px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 20px;
+  font-size: 13px;
+}
+
+#moreOne, #moreTwo, #moreThree {
+  display: none;
+}
+
+// Media quries
 
 @media screen and (max-width: 1087px) {
   .navbar-menu {

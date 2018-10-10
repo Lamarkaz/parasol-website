@@ -4,9 +4,10 @@
     <title>Parasol | Agile Smart Contract Development Environment </title>
     <link href="https://unpkg.com/ionicons@4.4.4/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   </head>
   <body>
-    <section class="hero is-fullheight">
+    <section class="hero particle-background is-fullheight">
       <div class="cont">
         <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
@@ -23,19 +24,19 @@
 
           <div class="navbar-menu is-transparent" id="navMenu">
             <div class="navbar-start">
-              <a class="navbar-item has-text-white">
+              <a class="navbar-item cool-link">
                 Principles
               </a>
 
-              <a class="navbar-item has-text-white">
+              <a class="navbar-item cool-link">
                 Features
               </a>
 
-              <a class="navbar-item has-text-white">
+              <a class="navbar-item cool-link">
                 Installation
               </a>
 
-              <a class="navbar-item has-text-white">
+              <a class="navbar-item cool-link">
                 Usage
               </a>
 
@@ -65,16 +66,85 @@
       <div class="hero-body"></div>
    </section>
    <section class="hero is-fullheight">
-    <div class="hero-head"></div>
+    <div class="hero-head">
+      <center>
+        <h2 class="has-text-white headerText">Principles</h2>
+      </center>
+    </div>
     <div class="hero-body">
-        <p class="level-item has-text-centered">
-          <a class="link is-info">Reservations</a>
-        </p>
+      <div class="container has-text-centered">
+        <div class="columns">
+          <div class="column" data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-in-out" data-aos-mirror="true">
+            <img src="./assets/seperate.png" width="80px">
+            <h2 class="prinText">Seperation of Concerns</h2>
+            <p>Most existing development environments are designed for dApps, not for smart contracts. Developers are restricted to the Migration smart contracts design pattern as required by other development environments to facilitate<span id="dotsOne"> ... </span><span id="moreOne">dApp versioning. Parasol puts into consideration developers who intend to develop pure smart contracts and avoids restricting them to a specific dApp design pattern</span></p>
+            <a class="button is-danger is-active rdmore" onclick="showOne()" id="showBtnOne">Read more</a>
+          </div>
+          <div class="column" data-aos="fade-up" data-aos-delay="300" data-aos-easing="ease-in-out" data-aos-mirror="true">
+            <img src="./assets/freedom.png" width="80px">
+            <h2 class="prinText">Freedom</h2>
+            <p>Parasol aims to implement as little abstraction on top of its dependencies as possible. It provides direct configuration access to its core components such as solc and ganache. Additionally, it allows the user the freedom <span id="dotsTwo"> ... </span><span id="moreTwo">to customize and contract deployment logic through the deployer() function in the configuration file.</span></p>
+            <a class="button is-danger is-active rdmore" onclick="showTwo()" id="showBtnTwo">Read more</a>
+          </div>
+          <div class="column" data-aos="fade-up" data-aos-delay="600" data-aos-easing="ease-in-out" data-aos-mirror="true">
+            <img src="./assets/agile.png" width="110px">
+            <h2 class="prinText">Agility</h2>
+            <p>Agile development is important for the entire smart contract development cycle, not only for the Solidity contracts themselves. In the realm of Solidity, unit tests can end up taking substantially longer to perfect than their<span id="dotsThree"> ... </span><span id="moreThree">source contracts. Hence, they consume more time. And then comes, documentation. In Parasol's development environment, any changes made to unit tests, smart contract source code or any js/json file will immediately and quickly recompile all code, run static analysis, redeploy on ganache, recompile documentation and rerun unit tests.</span></p>
+            <a class="button is-danger is-active rdmore" onclick="showThree()" id="showBtnThree">Read more</a>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="hero-footer"></div>
    </section>
   </body>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+  function showOne() {
+    var dots = document.getElementById("dotsOne");
+    var moreText = document.getElementById("moreOne");
+    var btnText = document.getElementById("showBtnOne");
+
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Read more"; 
+      moreText.style.display = "none";
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Read less"; 
+      moreText.style.display = "inline";
+    }
+  }
+  function showTwo() {
+    var dots = document.getElementById("dotsTwo");
+    var moreText = document.getElementById("moreTwo");
+    var btnText = document.getElementById("showBtnTwo");
+
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Read more"; 
+      moreText.style.display = "none";
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Read less"; 
+      moreText.style.display = "inline";
+    }
+  }
+  function showThree() {
+    var dots = document.getElementById("dotsThree");
+    var moreText = document.getElementById("moreThree");
+    var btnText = document.getElementById("showBtnThree");
+
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Read more"; 
+      moreText.style.display = "none";
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Read less"; 
+      moreText.style.display = "inline";
+    }
+  }
   document.addEventListener('DOMContentLoaded', function () {
     // Get all "navbar-burger" elements
     var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
@@ -100,5 +170,6 @@
     }
 
     });
+    AOS.init();
   </script>
 </html>
