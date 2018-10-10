@@ -47,6 +47,9 @@ $input-shadow: none;
 
 
 // Native styles
+.navbar {
+  margin-top: 10px;
+}
 .button-text {
   font-size: 13px;
   font-weight: 700;
@@ -95,7 +98,7 @@ $input-shadow: none;
 }
 
 .particle-background { 
-  background: url(/assets/bg.png) no-repeat center center fixed; 
+  background: url(/assets/bg.png) no-repeat center center; 
   -webkit-background-size: 100%;
   -moz-background-size: 100%;
   -o-background-size: 100%;
@@ -105,7 +108,7 @@ $input-shadow: none;
 .headerText {
   margin-top: 70px;
   margin-bottom: 30px;
-  font-size: 22px;
+  font-size: 30px;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -132,6 +135,37 @@ $input-shadow: none;
   display: none;
 }
 
+.footerWrapper {
+  position: relative;
+}
+
+.footerBackground {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.prinSection {
+  z-index: 3;
+}
+
+.Term {
+  margin-bottom: -110px;
+  z-index: 1;
+}
+
+.centered {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.imgContainer {
+  position: relative;
+  text-align: center;
+  color: white;
+}
 // Media quries
 
 @media screen and (max-width: 1087px) {

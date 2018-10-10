@@ -63,40 +63,71 @@
           </div>
         </nav>
       </div>
-      <div class="hero-body"></div>
-   </section>
-   <section class="hero is-fullheight">
-    <div class="hero-head">
-      <center>
-        <h2 class="has-text-white headerText">Principles</h2>
-      </center>
-    </div>
-    <div class="hero-body">
-      <div class="container has-text-centered">
-        <div class="columns">
-          <div class="column" data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-in-out" data-aos-mirror="true">
-            <img src="./assets/seperate.png" width="80px">
-            <h2 class="prinText">Seperation of Concerns</h2>
-            <p>Most existing development environments are designed for dApps, not for smart contracts. Developers are restricted to the Migration smart contracts design pattern as required by other development environments to facilitate<span id="dotsOne"> ... </span><span id="moreOne">dApp versioning. Parasol puts into consideration developers who intend to develop pure smart contracts and avoids restricting them to a specific dApp design pattern</span></p>
-            <a class="button is-danger is-active rdmore" onclick="showOne()" id="showBtnOne">Read more</a>
-          </div>
-          <div class="column" data-aos="fade-up" data-aos-delay="300" data-aos-easing="ease-in-out" data-aos-mirror="true">
-            <img src="./assets/freedom.png" width="80px">
-            <h2 class="prinText">Freedom</h2>
-            <p>Parasol aims to implement as little abstraction on top of its dependencies as possible. It provides direct configuration access to its core components such as solc and ganache. Additionally, it allows the user the freedom <span id="dotsTwo"> ... </span><span id="moreTwo">to customize and contract deployment logic through the deployer() function in the configuration file.</span></p>
-            <a class="button is-danger is-active rdmore" onclick="showTwo()" id="showBtnTwo">Read more</a>
-          </div>
-          <div class="column" data-aos="fade-up" data-aos-delay="600" data-aos-easing="ease-in-out" data-aos-mirror="true">
-            <img src="./assets/agile.png" width="110px">
-            <h2 class="prinText">Agility</h2>
-            <p>Agile development is important for the entire smart contract development cycle, not only for the Solidity contracts themselves. In the realm of Solidity, unit tests can end up taking substantially longer to perfect than their<span id="dotsThree"> ... </span><span id="moreThree">source contracts. Hence, they consume more time. And then comes, documentation. In Parasol's development environment, any changes made to unit tests, smart contract source code or any js/json file will immediately and quickly recompile all code, run static analysis, redeploy on ganache, recompile documentation and rerun unit tests.</span></p>
-            <a class="button is-danger is-active rdmore" onclick="showThree()" id="showBtnThree">Read more</a>
+      <div class="hero body">
+          <div class="container has-text-centered">
+            <div class="colums">
+              <div class="column">
+                <img class="Term" src="../assets/terminal.png" width="850px">
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+    <section class="hero is-fullheight prinSection">
+      <div class="hero-head">
+        <center>
+          <h2 class="has-text-white headerText">Principles</h2>
+        </center>
+      </div>
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div class="columns">
+            <div class="column" data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-in-out" data-aos-mirror="true">
+              <img src="./assets/seperate.png" width="80px">
+              <h2 class="prinText">Seperation of Concerns</h2>
+              <p>Most existing development environments are designed for dApps, not for smart contracts. Developers are restricted to the Migration smart contracts design pattern as required by other development environments to facilitate<span id="dotsOne"> ... </span><span id="moreOne">dApp versioning. Parasol puts into consideration developers who intend to develop pure smart contracts and avoids restricting them to a specific dApp design pattern</span></p>
+              <a class="button is-danger is-active rdmore" onclick="showOne()" id="showBtnOne">Read more</a>
+            </div>
+            <div class="column" data-aos="fade-up" data-aos-delay="300" data-aos-easing="ease-in-out" data-aos-mirror="true">
+              <img src="./assets/freedom.png" width="80px">
+              <h2 class="prinText">Freedom</h2>
+              <p>Parasol aims to implement as little abstraction on top of its dependencies as possible. It provides direct configuration access to its core components such as solc and ganache. Additionally, it allows the user the freedom <span id="dotsTwo"> ... </span><span id="moreTwo">to customize and contract deployment logic through the deployer() function in the configuration file.</span></p>
+              <a class="button is-danger is-active rdmore" onclick="showTwo()" id="showBtnTwo">Read more</a>
+            </div>
+            <div class="column" data-aos="fade-up" data-aos-delay="600" data-aos-easing="ease-in-out" data-aos-mirror="true">
+              <img src="./assets/agile.png" width="110px">
+              <h2 class="prinText">Agility</h2>
+              <p>Agile development is important for the entire smart contract development cycle, not only for the Solidity contracts themselves. In the realm of Solidity, unit tests can end up taking substantially longer to perfect than their<span id="dotsThree"> ... </span><span id="moreThree">source contracts. Hence, they consume more time. And then comes, documentation. In Parasol's development environment, any changes made to unit tests, smart contract source code or any js/json file will immediately and quickly recompile all code, run static analysis, redeploy on ganache, recompile documentation and rerun unit tests.</span></p>
+              <a class="button is-danger is-active rdmore" onclick="showThree()" id="showBtnThree">Read more</a>
+            </div>
           </div>
         </div>
       </div>
+      <div class="hero-footer"></div>
+    </section>
+    <section class="hero is-fullheight">
+      <div class="hero body">
+          <div class="container has-text-centered">
+            <div class="colums">
+              <div class="column" data-aos="fade-up" data-aos-delay="500" data-aos-easing="ease-in-out" data-aos-mirror="true">
+                <div class="imageContainer">
+                  <h2 class="has-text-white headerText centered">Features</h2>
+                  <img src="../assets/features.png" width="55%">
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+   <section class="hero is-fullheight">
+     <div class="hero-head"></div>
+     <div class="hero-body"></div>
+     <div class="hero-footer">
+      <div class="footerWrapper">
+          <img class="footerBackground" src="../assets/footer.png" width="100%">
+      </div>
     </div>
-    <div class="hero-footer"></div>
-   </section>
+  </section>
   </body>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
