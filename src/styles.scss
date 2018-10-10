@@ -5,28 +5,84 @@
 
 // Set your brand colors
 $blackish: #121212;
+$red: #ff2b3b;
+$white: #ffffff;
+$green: #42CFC9;
 
 // Update Bulma's global variables
 $family-sans-serif: "Asap", sans-serif;
 // $grey-dark: $brown;
 // $grey-light: $beige-light;
-// $primary: $purple;
-// $link: $pink;
-// $widescreen-enabled: false;
-// $fullhd-enabled: false;
+$primary: $green;
+$danger: $red;
+$link: $white;
+$widescreen-enabled: true;
+$fullhd-enabled: false;
 
 // Update some of Bulma's component variables
 $body-background-color: $blackish;
-$control-border-width: 2px;
+$control-border-width: 0px;
 $input-border-color: transparent;
 $input-shadow: none;
 
-// Import only what you need from Bulma
+// Global
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
+
+// Layout
+@import "../node_modules/bulma/sass/layout/hero.sass";
+@import "../node_modules/bulma/sass/layout/_all.sass";
+
+// Elements
 @import "../node_modules/bulma/sass/elements/button.sass";
 @import "../node_modules/bulma/sass/elements/container.sass";
 @import "../node_modules/bulma/sass/elements/form.sass";
 @import "../node_modules/bulma/sass/elements/title.sass";
-@import "../node_modules/bulma/sass/layout/hero.sass";
-@import "../node_modules/bulma/sass/layout/section.sass";
+
+//Components
+@import "../node_modules/bulma/sass/components/navbar.sass";
+
+
+// Native styles
+.button-text {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+#nav-toggle-state {
+  display: none;
+}
+
+#nav-toggle-state:checked ~ .nav-menu {
+  display: block;
+}
+
+.cont {
+  max-width: 1124px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+
+.navbar-item {
+  border-bottom: white 0px solid;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+}
+
+a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.navbar-burger:hover {
+  background-color: rgba(255,255,255, 1);
+  color: black;
+}
+
+@media screen and (max-width: 1087px) {
+  .navbar-menu {
+    background-color: transparent;
+  }
+}

@@ -2,9 +2,103 @@
 <html lang="en">
   <head>
     <title>Parasol | Agile Smart Contract Development Environment </title>
+    <link href="https://unpkg.com/ionicons@4.4.4/dist/css/ionicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
+    <section class="hero is-fullheight">
+      <div class="cont">
+        <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+              <img src="./assets/logo.svg" width="112" height="28">
+            </a>
 
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <div class="navbar-menu is-transparent" id="navMenu">
+            <div class="navbar-start">
+              <a class="navbar-item has-text-white">
+                Principles
+              </a>
+
+              <a class="navbar-item has-text-white">
+                Features
+              </a>
+
+              <a class="navbar-item has-text-white">
+                Installation
+              </a>
+
+              <a class="navbar-item has-text-white">
+                Usage
+              </a>
+
+            </div>
+
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-primary is-rounded" target="_blank" href="https://developer.lamarkaz.com/parasol">
+                    <span class="icon">
+                      <i class="ion-md-book"></i>
+                    </span>
+                    <span class="button-text">Documentation</span>
+                  </a>
+                  <a class="button is-white is-rounded" target="_blank" href="https://github.com/lamarkaz/parasol">
+                    <span class="icon">
+                      <i class="ion-logo-github"></i>
+                    </span>
+                    <span class="button-text">Github</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="hero-body"></div>
+   </section>
+   <section class="hero is-fullheight">
+    <div class="hero-head"></div>
+    <div class="hero-body">
+        <p class="level-item has-text-centered">
+          <a class="link is-info">Reservations</a>
+        </p>
+    </div>
+    <div class="hero-footer"></div>
+   </section>
   </body>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Get all "navbar-burger" elements
+    var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+    // Check if there are any nav burgers
+    if ($navbarBurgers.length > 0) {
+
+      // Add a click event on each of them
+      $navbarBurgers.forEach(function ($el) {
+        $el.addEventListener('click', function () {
+
+          // Get the target from the "data-target" attribute
+          var target = $el.dataset.target;
+          var $target = document.getElementById(target);
+          var $navMenu = document.getElementById("navMenu");
+
+          // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+          $el.classList.toggle('is-active');
+          $navMenu.classList.toggle('is-active');
+
+        });
+      });
+    }
+
+    });
+  </script>
 </html>
