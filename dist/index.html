@@ -68,9 +68,58 @@
             <div class="colums">
               <div class="column">
                 <div class="textWrapper">
-                 <h2 class="LandingText"><span style="color: #ff2b3b">Agile</span> Smart Contract Development Environment</h2>
+                 <h2 class="LandingText" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1200" data-aos-easing="ease-in-out"><span style="color: #ff2b3b">Agile</span> Smart Contract Development Environment</h2>
                 </div>
-                <img class="Term" src="../assets/terminal.png" width="850px">
+                <div class="terminal-window">
+                  <img class="Term" src="../assets/terminal.png" width="100%">
+                  <div class="terminal">
+                      <div class="history"></div>
+                      $&nbsp;<span class="prompt"></span>
+                      <span class="typed-cursor"></span>
+                  </div>
+                </div>
+                <!-- data -->
+                <div class="terminal-data mimik-run-output">
+                    <span class="termGreen">✔ Ethereum development network running on port 8555</span>
+                    <br>
+                    <span class="termCyan">parasol></span> <span class="termGreen">✔ Compiled Token.psol:Token</span>
+                    <br>
+                    <span class="termGreen">Contract Token.psol:Token deployed at address 0x1a6b15Ea9d71b6A01C5EC718e27c2188F2454711</span>
+                    <br>
+                    <br>
+                    &nbsp;&nbsp;<span class="termWhite">Token.psol: Inline tests</span>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="termGreen">✔ </span><span class="gray">Transfer() should change balance after transfer&nbsp;&nbsp;</span><span class="termRed">(238ms)</span>
+                    <br>
+                    &nbsp;&nbsp;<span class="termWhite">Token.psol</span>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="termWhite">Transfer()</span>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="termGreen">✔ </span><span class="gray">should revert when transferred amount is smaller than 0</span>
+                    <br>
+                    <br>
+                    <span class="termGreen">2 passing</span>&nbsp;&nbsp;<span class="gray">(260ms)</span>
+                    <br>
+                    <span class="termCyan">parasol></span>&nbsp;&nbsp;
+                </div> 
+                <div class="terminal-data trans-run-output">
+                  { <span class="termGreen">transactionHash:</span>
+                  <br>
+                  '<span class="termGreen">0xe6dd34e253c63421e0b1b29f696c2867613f81ed45a46cfeb8d75517c3febde4</span>',
+                  <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;transactionIndex: <span class="termCyan">0</span>,
+                  <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;blockHash:
+                  <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'<span class="termGreen">0x8ec83f5c5dd78eca27f634f554b95035d9c34529d59bf5d628515cb143cdc963</span>',
+                  <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;blockNumber: <span class="termCyan">4</span>
+                  <br>
+                  .
+                  <br>
+                  .
+                  </span>
+                </div>    
               </div>
             </div>
         </div>
@@ -137,12 +186,82 @@
   <script src="https://www.mattboldt.com/demos/typed-js/js/typed.custom.js"></script>
   <script>
   $("nav").find("a").click(function(e) {
-    e.preventDefault();
     var section = $(this).attr("href");
     $("html, body").animate({
         scrollTop: $(section).offset().top
     });
   });
+  $(function() {
+  var data = [
+  { 
+    action: 'type',
+    strings: ["npm install -g parasol^400"],
+    output: '<span class="gray">+ parasol@1.0.1</span><br><br>',
+    postDelay: 1000
+  },
+  { 
+    action: 'type',
+    strings: ["parasol init^400"],
+    output: '<span style="color:#00d137">✔ Parasol project created successfully!</span>',
+    postDelay: 1000
+  },
+  { 
+    action: 'type',
+    clear: true,
+    strings: ["parasol^400"],
+    output: $('.mimik-run-output').html(),
+    postDelay: 2000
+  },
+  { 
+    action: 'type',
+    strings: ["contracts['Token.psol:Token'].methods.transfer( accounts[1] , 5 ).send( { from: accounts[0] } )^700"],
+    output: $('.trans-run-output').html(),
+    postDelay: 2000
+  }
+];
+  runScripts(data, 0);
+});
+
+function runScripts(data, pos) {
+  var prompt = $('.prompt'),
+    script = data[pos];
+  if(script.clear === true) {
+    $('.history').html(''); 
+  }
+  switch(script.action) {
+    case 'type':
+      // cleanup for next execution
+      prompt.removeData();
+      $('.typed-cursor').text('');
+      prompt.typed({
+        strings: script.strings,
+        typeSpeed: 30,
+        callback: function() {
+          var history = $('.history').html();
+          history = history ? [history] : [];
+          history.push('$ ' + prompt.text());
+          if(script.output) {
+            history.push(script.output);
+            prompt.html('');
+            $('.history').html(history.join('<br>'));
+          }
+          // scroll to bottom of screen
+          $('section.terminal').scrollTop($('section.terminal').height());
+          // Run next script
+          pos++;
+          if(pos < data.length) {
+            setTimeout(function() {
+              runScripts(data, pos);
+            }, script.postDelay || 1000);
+          }
+        }
+      });
+      break;
+    case 'view':
+      break;
+  }
+}
+
   function showOne() {
     var dots = document.getElementById("dotsOne");
     var moreText = document.getElementById("moreOne");

@@ -47,6 +47,12 @@ $input-shadow: none;
 
 
 // Native styles
+.body {
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .navbar {
   margin-top: 10px;
 }
@@ -173,6 +179,78 @@ $input-shadow: none;
   text-transform: uppercase;
   font-weight: 700;
 }
+
+// Typed Terminal Style
+.terminal {
+  position: absolute;
+  top: 210px;
+  left: 260px;
+}
+
+.history {
+  color: white;
+}
+
+.termGreen {
+  color: #00d137;
+}
+
+.termWhite {
+  color: #ffffff;
+}
+
+.termCyan {
+  color: #89ddff;
+}
+
+.termRed {
+  color: #ff2b3b;
+}
+.terminal-window {
+  text-align: left;
+  width: 850px;
+  margin: auto;
+}
+
+.terminal-window section.terminal {
+  color: white;
+  font-family: "Asap";
+  font-size: 18px;
+  background: #30353A;
+  padding: 10px;
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  top: 30px;
+  bottom: 0;
+  overflow: auto;
+}
+
+.terminal-window section.terminal .typed-cursor {
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+.terminal-data { display: none; }
+.terminal-window .gray { color: gray; }
+.terminal-window .green { color: green;}
 
 // Media quries
 @media screen and (max-width: 1087px) {
