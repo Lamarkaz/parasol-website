@@ -24,11 +24,11 @@
 
           <div class="navbar-menu is-transparent" id="navMenu">
             <div class="navbar-start">
-              <a class="navbar-item cool-link">
+              <a href="#principles" class="navbar-item cool-link">
                 Principles
               </a>
 
-              <a class="navbar-item cool-link">
+              <a href="#features" class="navbar-item cool-link">
                 Features
               </a>
 
@@ -67,13 +67,16 @@
           <div class="container has-text-centered">
             <div class="colums">
               <div class="column">
+                <div class="textWrapper">
+                 <h2 class="LandingText"><span style="color: #ff2b3b">Agile</span> Smart Contract Development Environment</h2>
+                </div>
                 <img class="Term" src="../assets/terminal.png" width="850px">
               </div>
             </div>
         </div>
       </div>
     </section>
-    <section class="hero is-fullheight prinSection">
+    <section id="principles" class="hero is-fullheight prinSection">
       <div class="hero-head">
         <center>
           <h2 class="has-text-white headerText">Principles</h2>
@@ -105,7 +108,7 @@
       </div>
       <div class="hero-footer"></div>
     </section>
-    <section class="hero is-fullheight">
+    <section id="features" class="hero is-fullheight">
       <div class="hero body">
           <div class="container has-text-centered">
             <div class="colums">
@@ -130,7 +133,16 @@
   </section>
   </body>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://www.mattboldt.com/demos/typed-js/js/typed.custom.js"></script>
   <script>
+  $("nav").find("a").click(function(e) {
+    e.preventDefault();
+    var section = $(this).attr("href");
+    $("html, body").animate({
+        scrollTop: $(section).offset().top
+    });
+  });
   function showOne() {
     var dots = document.getElementById("dotsOne");
     var moreText = document.getElementById("moreOne");
