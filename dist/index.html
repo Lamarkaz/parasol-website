@@ -32,13 +32,9 @@
                 Features
               </a>
 
-              <!-- <a class="navbar-item cool-link">
-                Installation
-              </a>
-
               <a class="navbar-item cool-link">
-                Usage
-              </a> -->
+                Getting Started
+              </a>
 
             </div>
 
@@ -115,9 +111,7 @@
                   <br>
                   &nbsp;&nbsp;&nbsp;&nbsp;blockNumber: <span class="termCyan">4</span>
                   <br>
-                  .
-                  <br>
-                  .
+                  ... }
                   </span>
                 </div>    
               </div>
@@ -161,9 +155,16 @@
       <div class="hero body">
           <div class="container has-text-centered">
             <div class="colums">
-              <div class="column" data-aos="fade-up" data-aos-delay="500" data-aos-easing="ease-in-out" data-aos-mirror="true">
+              <div class="column" data-aos="fade-up" data-aos-delay="500" data-aos-easing="ease-in-out">
                 <div class="imgContainer">
-                  <h2 class="has-text-white headerText centered">Features</h2>
+                  <p class="has-text-white featText centered" style="top: 16%; left: 2.5%" data-aos="fade-up" data-aos-delay="1000" data-aos-easing="ease-in-out">Instant zero-configuration contract <br> deployments using INFURA</p>
+                  <p class="has-text-white featText centered" style="top: 45%; left: -5%" data-aos="fade-up" data-aos-delay="1200" data-aos-easing="ease-in-out">Async-REPL Javascript session to <br> interact with deployed contracts & web3</p>
+                  <p class="has-text-white featText centered" style="top: 64%; left: 9%" data-aos="fade-up" data-aos-delay="1400" data-aos-easing="ease-in-out">Integrated Markdown contract <br> documentation using Natspec + ABI</p>
+                  <p class="has-text-white featText centered" style="bottom: 9%; left: 42%" data-aos="fade-up" data-aos-delay="1600" data-aos-easing="ease-in-out">Extended Mocha unit tests</p>
+                  <p class="has-text-white featText centered" style="bottom: 24.5%; right: 10%" data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-in-out">Auto-recompiling, tests <br> & documentation on file change</p>
+                  <p class="has-text-white featText centered" style="bottom: 43%; right: 1.5%" data-aos="fade-up" data-aos-delay="1200" data-aos-easing="ease-in-out">Unopinionated design, <br> low design pattern restrictions</p>
+                  <p class="has-text-white featText centered" style="bottom: 70.9%; right: 4.7%" data-aos="fade-up" data-aos-delay="1000" data-aos-easing="ease-in-out">Built in Solidity Preprocessor</p>
+                  <h2 class="has-text-white headerText centered" style="top: 39.8%; left: 51.3%">Features</h2>
                   <img src="../assets/features.png" width="55%">
                 </div>
               </div>
@@ -181,7 +182,7 @@
               <div class="footerContent centeredFooter">
                 <h2 class="mailText">Join our mailing list</h2>
                 <div class="field">
-                  <div class="control">
+                  <div class="control pulse">
                     <input class="input is-medium is-transparent mailInput" type="text" placeholder="Email Address">
                     <a class="button is-medium is-danger mailBtn">Join our mailing list</a>
                   </div>
@@ -246,10 +247,16 @@
   },
   { 
     action: 'type',
-    clear: true,
+    strings: ["clear^400"],
+    output: ' ',
+    postDelay: 1000
+  },
+  { 
+    action: 'type',
     strings: ["parasol^400"],
     output: $('.mimik-run-output').html(),
-    postDelay: 2000
+    postDelay: 2000,
+    clear: true
   },
   { 
     action: 'type',

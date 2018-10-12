@@ -186,7 +186,6 @@ $input-shadow: none;
 .mailInput {
   background-color: #212121;
   color: white;
-  margin-left: 60px;
   width: 340px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -207,8 +206,6 @@ $input-shadow: none;
 .mailBtn {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 15px !important;
@@ -227,9 +224,11 @@ $input-shadow: none;
 
 .centered {
   position: absolute;
-  top: 40%;
-  left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.featText {
+  font-size: 16px;
 }
 
 .imgContainer {
@@ -320,6 +319,7 @@ $input-shadow: none;
 .footerText {
   z-index: 99;
 }
+
 // Media quries
 @media screen and (max-width: 1087px) {
   .navbar-menu {
@@ -327,3 +327,46 @@ $input-shadow: none;
   }
 }
 
+// Animations 
+.pulse {
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(107, 107, 107, 0.4);
+  animation: pulse 2.5s infinite;
+}
+.pulse:hover {
+  animation: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(75, 75, 75, 0.4);
+  }
+  50% {
+    -webkit-box-shadow: 0 0 0 0 rgba(75, 75, 75, 0.4);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 4px rgba(75, 75, 75, 0.4);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(75, 75, 75, 0.4);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(75, 75, 75, 0.4);
+    box-shadow: 0 0 0 0 rgba(75, 75, 75, 0.4);
+  }
+  50% {
+    -moz-box-shadow: 0 0 0 0 rgba(75, 75, 75, 0.4);
+    box-shadow: 0 0 0 0 rgba(75, 75, 75, 0.4);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 4px rgba(75, 75, 75, 0.4);
+    box-shadow: 0 0 0 4px rgba(75, 75, 75, 0.4);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(75, 75, 75, 0.4);
+    box-shadow: 0 0 0 0 rgba(75, 75, 75, 0.4);
+  }
+}
