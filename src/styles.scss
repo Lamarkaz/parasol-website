@@ -49,7 +49,7 @@ $input-shadow: none;
 // Native styles
 .body {
   color: white;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -222,6 +222,13 @@ $input-shadow: none;
   z-index: 1;
 }
 
+.preTerminal {
+  background-color: transparent;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+}
+
 .centered {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -273,14 +280,17 @@ $input-shadow: none;
 }
 
 .divider {
-  margin-top: 45px;
-  margin-bottom: 45px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   width: 300px;
   height: 2px;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 3px;
 }
 
+#preprocessor { 
+  background-color: #181818;
+}
 // Typed Terminal Style
 .terminal {
   position: absolute;
@@ -313,12 +323,45 @@ $input-shadow: none;
   width: 850px;
   margin: auto;
 }
+.terminal-window-second {
+  text-align: left;
+  height: 360px;
+  border-radius: 10px;
+  margin: auto;
+  position: relative;
+}
+
+.terminal-window-second header {
+  background: #E0E8F0;
+  height: 32px;
+  border-radius: 8px 8px 0 0;
+  padding-left: 10px;
+}
+
+.terminal-window-second header .termButton  {
+  width: 12px;
+  height: 12px;
+  margin: 10px 4px 0 0;
+  display: inline-block;
+  border-radius: 8px;
+}
+
+.terminal-window-second header .termButton.green {
+  background: #3BB662;
+}
+
+.terminal-window-second header .termButton.yellow {
+  background: #E5C30F;
+}
+
+.terminal-window-second header .termButton.red {
+  background: #E75448;
+}
 
 .terminal-window section.terminal {
   color: white;
   font-family: "Asap";
   font-size: 18px;
-  background: #30353A;
   padding: 10px;
   box-sizing: border-box;
   position: absolute;
@@ -326,6 +369,26 @@ $input-shadow: none;
   top: 30px;
   bottom: 0;
   overflow: auto;
+}
+
+.terminal-window-second section.terminal {
+  color: white;
+  font-family: "Asap";
+  font-size: 18px;
+  background: #26292d;
+  padding: 10px;
+  width: 100%;
+  height: 200%;
+  position: initial;
+  z-index: 3;
+}
+
+.filename {
+  float: right;
+  margin-right: 49%;
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 5px;
 }
 
 .terminal-window section.terminal .typed-cursor {
