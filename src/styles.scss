@@ -379,7 +379,6 @@ $input-shadow: none;
   background: #30353A;
   padding: 10px;
   width: 100%;
-  height: 200%;
   position: initial;
   z-index: 3;
 }
@@ -494,6 +493,19 @@ $input-shadow: none;
     margin-top: 70px;
   }
 }
+
+@media screen and (max-height: 930px) {
+  .code-viewer {
+    margin-bottom: 40px
+  }
+}
+
+@media screen and (max-height: 900px) {
+  .code-viewer {
+    margin-bottom: 90px
+  }
+}
+
 
 // Animations 
 .pulse {

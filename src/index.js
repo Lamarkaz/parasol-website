@@ -119,52 +119,6 @@ $(document)
       }
     }
 
-      function showOne() {
-        var dots = document.getElementById("dotsOne");
-        var moreText = document.getElementById("moreOne");
-        var btnText = document.getElementById("showBtnOne");
-
-        if (dots.style.display === "none") {
-          dots.style.display = "inline";
-          btnText.innerHTML = "Read more"; 
-          moreText.style.display = "none";
-        } else {
-          dots.style.display = "none";
-          btnText.innerHTML = "Read less"; 
-          moreText.style.display = "inline";
-        }
-      }
-      function showTwo() {
-        var dots = document.getElementById("dotsTwo");
-        var moreText = document.getElementById("moreTwo");
-        var btnText = document.getElementById("showBtnTwo");
-
-        if (dots.style.display === "none") {
-          dots.style.display = "inline";
-          btnText.innerHTML = "Read more"; 
-          moreText.style.display = "none";
-        } else {
-          dots.style.display = "none";
-          btnText.innerHTML = "Read less"; 
-          moreText.style.display = "inline";
-        }
-      }
-      function showThree() {
-        var dots = document.getElementById("dotsThree");
-        var moreText = document.getElementById("moreThree");
-        var btnText = document.getElementById("showBtnThree");
-
-        if (dots.style.display === "none") {
-          dots.style.display = "inline";
-          btnText.innerHTML = "Read more"; 
-          moreText.style.display = "none";
-        } else {
-          dots.style.display = "none";
-          btnText.innerHTML = "Read less"; 
-          moreText.style.display = "inline";
-        }
-      }
-
       document.addEventListener('DOMContentLoaded', function () {
         // Get all "navbar-burger" elements
         var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);

@@ -323,61 +323,119 @@
     <!-- Full code sample Modal -->
     <div class="modal">
       <div class="modal-background"></div>
-        <div class="terminal-window-second" style="height: auto">
-            <header>
-              <div class="termButton green"></div>
-              <div class="termButton yellow"></div>
-              <div class="termButton red"></div>
-              <p class="filename">Token.psol</p>
-            </header>
+          <div class="terminal-window-second" style="height: 700px; overflow: scroll">
             <section class="terminal">
-<pre class="preTerminal"><span style="color: #c586c0;">pragma</span> <span style="color: #569cd6;">solidity</span> ^0.4.24;
+<pre class="preTerminal"><span style="color: #C586C0;">pragma</span> <span style="color: #569CD6;">solidity</span> ^0.4.24;
 
-{{ strict = <span style="color: #569cd6;">true</span> }} <span style="color: #608b4e;">// Activate strict mode. This will abort deployment on both errors and warnings.</span>
+{{ strict = <span style="color: #569CD6;">true</span> }} <span style="color: #608B4E;">// Activate strict mode. This will abort deployment on both errors and warnings.</span>
 
-<span style="color: #608b4e;">///</span> <span style="color: #569cd6;">@title</span> <span style="color: #608b4e;">{{= title }}</span>
-<span style="color: #569cd6;">contract</span> <span style="color: #4ec9b0;">Token</span> {
+<span style="color: #608B4E;">///</span> <span style="color: #569CD6;">@title</span> <span style="color: #608B4E;">{{= title }}</span>
+<span style="color: #569CD6;">contract</span> <span style="color: #4CC5AD;">Token</span> {
 
-    <span style="color: #608b4e;">// Variables retrieved from parasol.js config file pre compilation</span>
-    <span style="color: #4ec9b0;">string</span> <span style="color: #569cd6;">private</span> name = <span style="color: #ce9178;">"{{= tokenName}}"</span>;
-    <span style="color: #4ec9b0;">string</span> <span style="color: #569cd6;">private</span> symbol = <span style="color: #ce9178;">"{{= tokenSymbol}}"</span>;
-    <span style="color: #4ec9b0;">uint8</span> <span style="color: #569cd6;">private</span> decimals = {{= tokenDecimals}};
-    <span style="color: #4ec9b0;">uint256</span> <span style="color: #569cd6;">private</span> totalSupply = {{= tokenSupply}}; 
-    <span style="color: #569cd6;">mapping</span> (<span style="color: #4ec9b0;">address</span> =&gt; <span style="color: #4ec9b0;">uint256</span>) <span style="color: #569cd6;">public</span> _balances;
-    <span style="color: #569cd6;">event</span> <span style="color: #4ec9b0;">Transfer</span>(<span style="color: #4ec9b0;">address</span> <span style="color: #569cd6;">indexed</span> _from, <span style="color: #4ec9b0;">address</span> <span style="color: #569cd6;">indexed</span> _to, <span style="color: #4ec9b0;">uint256</span> _value);
-    <span style="color: #569cd6;">constructor</span>() <span style="color: #569cd6;">public</span> {
-        _balances[<span style="color: #569cd6;">msg</span>.sender] = totalSupply;
+    <span style="color: #608B4E;">// Variables retrieved from parasol.js config file pre compilation</span>
+    <span style="color: #4CC5AD;">string</span> <span style="color: #569CD6;">private</span> _name = <span style="color: #CE9178;">"{{= tokenName}}"</span>;
+    <span style="color: #4CC5AD;">string</span> <span style="color: #569CD6;">private</span> _symbol = <span style="color: #CE9178;">"{{= tokenSymbol}}"</span>;
+    <span style="color: #4CC5AD;">uint8</span> <span style="color: #569CD6;">private</span> _decimals = {{= tokenDecimals}};
+    <span style="color: #4CC5AD;">uint256</span> <span style="color: #569CD6;">private</span> _totalSupply = {{= tokenSupply}};
+    
+    <span style="color: #569CD6;">mapping</span> (<span style="color: #4CC5AD;">address</span> =&gt; <span style="color: #4CC5AD;">uint256</span>) <span style="color: #569CD6;">public</span> _balances;
+
+    <span style="color: #569CD6;">event</span> <span style="color: #4CC5AD;">Transfer</span>(<span style="color: #4CC5AD;">address</span> <span style="color: #569CD6;">indexed</span> _from, <span style="color: #4CC5AD;">address</span> <span style="color: #569CD6;">indexed</span> _to, <span style="color: #4CC5AD;">uint256</span> _value);
+
+    <span style="color: #569CD6;">constructor</span>() <span style="color: #569CD6;">public</span> {
+        _balances[<span style="color: #569CD6;">msg</span>.sender] = _totalSupply;
     }
-    <span style="color: #569cd6;">function</span> <span style="color: #dcdcaa;">transfer</span>(<span style="color: #4ec9b0;">address</span> _to, <span style="color: #4ec9b0;">uint256</span> _value) <span style="color: #569cd6;">public</span> <span style="color: #c586c0;">returns</span> (<span style="color: #4ec9b0;">bool</span> success) {
-        <span style="color: #c586c0;">...</span>
-    {{    
-        <span style="color: #608b4e;">// inline mocha unit test</span>
-        <span style="color: #dcdcaa;">test</span>(<span style="color: #569cd6;">this</span>, <span style="color: #ce9178;">'Balance should change balance after transfer()'</span>, async <span style="color: #dcdcaa;">function</span>() {
-            var preBalance = await contracts[<span style="color: #ce9178;">"Token.psol:Token"</span>].methods.<span style="color: #dcdcaa;">balanceOf</span>(accounts[0]).<span style="color: #dcdcaa;">call</span>()
-            await contracts[<span style="color: #ce9178;">"Token.psol:Token"</span>].methods.transfer(accounts[1], 1).send()
-            var postBalance = await contracts[<span style="color: #ce9178;">"Token.psol:Token"</span>].methods.<span style="color: #dcdcaa;">balanceOf</span>(accounts[0]).<span style="color: #dcdcaa;">call</span>()
-            <span style="color: #c586c0;">assert</span>.<span style="color: #dcdcaa;">notEqual</span>(preBalance, postBalance)
-        })    
+
+    <span style="color: #608B4E;">/**</span>
+    <span style="color: #608B4E;">*</span> <span style="color: #569CD6;">@dev</span> <span style="color: #608B4E;">Transfer token for a specified addresses</span>
+    <span style="color: #608B4E;">*</span> <span style="color: #569CD6;">@param</span> <span style="color: #608B4E;">_to The address to transfer to.</span>
+    <span style="color: #608B4E;">*</span> <span style="color: #569CD6;">@param</span> <span style="color: #608B4E;">_value The amount to be transferred.</span>
+    <span style="color: #608B4E;">*/</span>
+    <span style="color: #569CD6;">function</span> <span style="color: #DCDCAA;">transfer</span>(<span style="color: #4CC5AD;">address</span> _to, <span style="color: #4CC5AD;">uint256</span> _value) <span style="color: #569CD6;">public</span> <span style="color: #C586C0;">returns</span> (<span style="color: #4CC5AD;">bool</span> success) {
+        <span style="color: #C586C0;">require</span>(_balances[<span style="color: #569CD6;">msg</span>.sender] &gt;= _value);
+        _balances[<span style="color: #569CD6;">msg</span>.sender] -= _value;
+        _balances[_to] += _value;
+        <span style="color: #C586C0;">emit</span> <span style="color: #DCDCAA;">Transfer</span>(<span style="color: #569CD6;">msg</span>.sender, _to, _value);
+        <span style="color: #C586C0;">return</span> <span style="color: #569CD6;">true</span>;
+    }
+
+    {{
+    
+        <span style="color: #608B4E;">// inline mocha unit test</span>
+        <span style="color: #DCDCAA;">test</span>(<span style="color: #569CD6;">this</span>, <span style="color: #CE9178;">'Balance should change balance after transfer()'</span>, async <span style="color: #DCDCAA;">function</span>() {
+            var preBalance = await contracts[<span style="color: #CE9178;">"Token.psol:Token"</span>].methods.<span style="color: #DCDCAA;">balanceOf</span>(accounts[0]).<span style="color: #DCDCAA;">call</span>()
+</span>            await contracts[<span style="color: #CE9178;">"Token.psol:Token"</span>].methods.<span style="color: #DCDCAA;">transfer</span>(accounts[1], 1).<span style="color: #DCDCAA;">send</span>()
+            var postBalance = await contracts[<span style="color: #CE9178;">"Token.psol:Token"</span>].methods.<span style="color: #DCDCAA;">balanceOf</span>(accounts[0]).<span style="color: #DCDCAA;">call</span>()
+            <span style="color: #C586C0;">assert</span>.<span style="color: #DCDCAA;">notEqual</span>(preBalance, postBalance)
+        })
+    
     }}
-    <span style="color: #608b4e;">// Preprocessor directive. Only compiles if in 'dev' network</span>
-    {{ <span style="color: #c586c0;">if</span> (network === <span style="color: #ce9178;">"dev"</span>) { }}
-        <span style="color: #569cd6;">function</span> <span style="color: #dcdcaa;">forceTransfer</span>(<span style="color: #4ec9b0;">address</span> _from, <span style="color: #4ec9b0;">address</span> _to, <span style="color: #4ec9b0;">uint256</span> _value) <span style="color: #569cd6;">public</span> <span style="color: #c586c0;">returns</span> (<span style="color: #4ec9b0;">bool</span> success) {
-            <span style="color: #c586c0;">require</span>(_balances[_from] &gt;= _value);
-            _balances[_from] -= _value;
-            _balances[_to] += _value;
-            <span style="color: #c586c0;">emit</span> <span style="color: #dcdcaa;">Transfer</span>(_from, _to, _value);
-            <span style="color: #c586c0;">return</span> <span style="color: #569cd6;">true</span>;
-        }
+
+    <span style="color: #608B4E;">///</span> <span style="color: #569CD6;">@author</span> <span style="color: #608B4E;">Lamarkaz</span>
+    <span style="color: #608B4E;">///</span> <span style="color: #569CD6;">@dev</span> <span style="color: #608B4E;">Checks balance of address</span>
+    <span style="color: #608B4E;">///</span> <span style="color: #569CD6;">@param</span> <span style="color: #608B4E;">_owner The queried address</span>
+    <span style="color: #608B4E;">///</span> <span style="color: #569CD6;">@return</span> <span style="color: #608B4E;">balance of address</span>
+    <span style="color: #569CD6;">function</span> <span style="color: #DCDCAA;">balanceOf</span>(<span style="color: #4CC5AD;">address</span> _owner) <span style="color: #569CD6;">constant public</span> <span style="color: #C586C0;">returns</span> (<span style="color: #4CC5AD;">uint256</span> balance) {
+        <span style="color: #C586C0;">return</span> _balances[_owner];
+    }
+
+    <span style="color: #608B4E;">/**</span>
+    <span style="color: #608B4E;">*</span> <span style="color: #569CD6;">@return</span> <span style="color: #608B4E;">the name of the token.</span>
+    <span style="color: #608B4E;">*/</span>
+    function <span style="color: #DCDCAA;">name</span>() public view <span style="color: #C586C0;">returns</span>(<span style="color: #4CC5AD;">string</span>) {
+        <span style="color: #C586C0;">return</span> _name;
+    }
+
+    <span style="color: #608B4E;">/**</span>
+    <span style="color: #608B4E;">*</span> <span style="color: #569CD6;">@return</span> <span style="color: #608B4E;">the symbol of the token.</span>
+    <span style="color: #608B4E;">*/</span>
+    function symbol() public view <span style="color: #C586C0;">returns</span>(<span style="color: #4CC5AD;">string</span>) {
+        <span style="color: #C586C0;">return</span> _symbol;
+    }
+
+    <span style="color: #608B4E;">/**</span>
+    <span style="color: #608B4E;">*</span> <span style="color: #569CD6;">@return</span> <span style="color: #608B4E;">the number of decimals of the token.</span>
+    <span style="color: #608B4E;">*/</span>
+    function decimals() public view <span style="color: #C586C0;">returns</span>(<span style="color: #4CC5AD;">uint8</span>) {
+        <span style="color: #C586C0;">return</span> _decimals;
+    }
+
+    <span style="color: #608B4E;">// Preprocessor directive. Only compiles if in 'dev' network</span>
+    {{ <span style="color: #C586C0;">if</span> (network === <span style="color: #CE9178;">"dev"</span>) { }}
+
+    <span style="color: #608B4E;">///</span> <span style="color: #569CD6;">@dev</span> <span style="color: #608B4E;">Force transfers tokens from any account to another. Only compiled in 'dev' network</span>
+    <span style="color: #608B4E;">///</span> <span style="color: #569CD6;">@param</span> <span style="color: #608B4E;">_from The address of the transfer sender</span>
+    <span style="color: #608B4E;">///</span> <span style="color: #569CD6;">@param</span> <span style="color: #608B4E;">_to The address of the transfer recipient</span>
+    <span style="color: #608B4E;">///</span> <span style="color: #569CD6;">@param</span> <span style="color: #608B4E;">_value The amount of tokens to be transferred</span>
+    <span style="color: #608B4E;">///</span> <span style="color: #569CD6;">@return</span> <span style="color: #608B4E;">true if tokens transferred successfully</span>
+    <span style="color: #569CD6;">function</span> <span style="color: #DCDCAA;">forceTransfer</span>(<span style="color: #4CC5AD;">address</span> _from, <span style="color: #4CC5AD;">address</span> _to, <span style="color: #4CC5AD;">uint256</span> _value) <span style="color: #569CD6;">public</span> <span style="color: #C586C0;">returns</span> (<span style="color: #4CC5AD;">bool</span> success) {
+        <span style="color: #C586C0;">require</span>(_balances[_from] &gt;= _value);
+        _balances[_from] -= _value;
+        _balances[_to] += _value;
+        <span style="color: #C586C0;">emit</span> <span style="color: #DCDCAA;">Transfer</span>(_from, _to, _value);
+        <span style="color: #C586C0;">return</span> <span style="color: #569CD6;">true</span>;
+    }
+
     {{ } }}
 
-}</pre>
+}
+
+{{
+
+    parasol.<span style="color: #DCDCAA;">onCompiled</span>(<span style="color: #569CD6;">this</span>, <span style="color: #DCDCAA;">function</span>(fileName){
+        console.<span style="color: #DCDCAA;">log</span>(<span style="color: #CE9178;">"File: " + fileName + " compiled"</span>)
+    })
+
+    parasol.<span style="color: #DCDCAA;">onError</span>(<span style="color: #569CD6;">this</span>, <span style="color: #DCDCAA;">function</span>(e){
+        console.<span style="color: #DCDCAA;">log</span>(<span style="color: #CE9178;">"error: "</span> + e)
+    })
+
+    parasol.<span style="color: #DCDCAA;">onDeployed</span>(<span style="color: #569CD6;">this</span>, <span style="color: #DCDCAA;">function</span>(<span style="color: #569CD6;">contract</span>, contractName){
+        console.<span style="color: #DCDCAA;">log</span>(contractName + <span style="color: #CE9178;">' deployed'</span>)
+    })
+
+}}</pre>
           </section>
-          <button class="code-viewer">
-            <span class="icon codeIcon">
-              <i class="ion-md-eye"></i>
-            </span>
-            <p class="codeText">View full code</p>
-          </button>
         </div>
       <button class="modal-close is-large" aria-label="close"></button>
     </div>
@@ -387,4 +445,51 @@
   <script src="https://www.mattboldt.com/demos/typed-js/js/typed.custom.js"></script>
   <script src="https://bulma.io/vendor/clipboard-1.7.1.min.js"></script>
   <script src="js/bundle.js"></script>
+  <script>
+          function showOne() {
+        var dots = document.getElementById("dotsOne");
+        var moreText = document.getElementById("moreOne");
+        var btnText = document.getElementById("showBtnOne");
+
+        if (dots.style.display === "none") {
+          dots.style.display = "inline";
+          btnText.innerHTML = "Read more"; 
+          moreText.style.display = "none";
+        } else {
+          dots.style.display = "none";
+          btnText.innerHTML = "Read less"; 
+          moreText.style.display = "inline";
+        }
+      }
+      function showTwo() {
+        var dots = document.getElementById("dotsTwo");
+        var moreText = document.getElementById("moreTwo");
+        var btnText = document.getElementById("showBtnTwo");
+
+        if (dots.style.display === "none") {
+          dots.style.display = "inline";
+          btnText.innerHTML = "Read more"; 
+          moreText.style.display = "none";
+        } else {
+          dots.style.display = "none";
+          btnText.innerHTML = "Read less"; 
+          moreText.style.display = "inline";
+        }
+      }
+      function showThree() {
+        var dots = document.getElementById("dotsThree");
+        var moreText = document.getElementById("moreThree");
+        var btnText = document.getElementById("showBtnThree");
+
+        if (dots.style.display === "none") {
+          dots.style.display = "inline";
+          btnText.innerHTML = "Read more"; 
+          moreText.style.display = "none";
+        } else {
+          dots.style.display = "none";
+          btnText.innerHTML = "Read less"; 
+          moreText.style.display = "inline";
+        }
+      }
+  </script>
 </html>
