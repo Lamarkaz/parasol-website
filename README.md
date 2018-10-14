@@ -10,5 +10,5 @@ Run the development environment
 ## Upcoming
 
 - [ ] Mobile version
-- [ ] PSOL Section
-- [ ] Installation and Usage Section
+- [*] PSOL Section
+- [*] Installation and Usage Section
