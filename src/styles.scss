@@ -44,6 +44,7 @@ $input-shadow: none;
 
 //Components
 @import "../node_modules/bulma/sass/components/navbar.sass";
+@import "../node_modules/bulma/sass/components/modal.sass";
 
 
 // Native styles
@@ -428,6 +429,55 @@ $input-shadow: none;
 .headPreprocessor {
   margin-top: 50px;
 }
+
+.code-viewer {
+  width: 50px;
+  height: 50px;
+  background: rgba(255,255,255,0.7);
+  position: absolute;
+  bottom: -102%;
+  right: 30px;
+  border: 0px;
+  padding-top: 3px;
+  border-radius: 999px;
+  font-size: 24px;
+  color: #30353A;
+  cursor: pointer;
+  transition: width 0.5s ease-in-out;
+}
+
+.code-viewer:focus {
+  outline: none;
+}
+
+.code-viewer:hover {
+  background: rgba(255,255,255,0.9)
+}
+
+.codeText {
+  display: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.terminal-window-second:hover .code-viewer {
+  width: 180px;
+}
+
+.terminal-window-second:hover .codeIcon {
+  display: none;
+}
+
+.terminal-window-second:hover .codeText {
+  display: block;
+}
+
+.terminal-window-second:hover section.terminal {
+  background-color: rgb(58, 64, 70);
+}
+
+
 
 // Media quries
 @media screen and (max-width: 1087px) {

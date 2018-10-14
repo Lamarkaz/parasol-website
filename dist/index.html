@@ -234,6 +234,12 @@
 
 }</pre>
               </section>
+              <button class="code-viewer">
+                <span class="icon codeIcon">
+                  <i class="ion-md-eye"></i>
+                </span>
+                <p class="codeText">View full code</p>
+              </button>
             </div>
           </div>
       </div>
@@ -314,209 +320,71 @@
         </div>
       </div>
     </section>
+    <!-- Full code sample Modal -->
+    <div class="modal">
+      <div class="modal-background"></div>
+        <div class="terminal-window-second" style="height: auto">
+            <header>
+              <div class="termButton green"></div>
+              <div class="termButton yellow"></div>
+              <div class="termButton red"></div>
+              <p class="filename">Token.psol</p>
+            </header>
+            <section class="terminal">
+<pre class="preTerminal"><span style="color: #c586c0;">pragma</span> <span style="color: #569cd6;">solidity</span> ^0.4.24;
+
+{{ strict = <span style="color: #569cd6;">true</span> }} <span style="color: #608b4e;">// Activate strict mode. This will abort deployment on both errors and warnings.</span>
+
+<span style="color: #608b4e;">///</span> <span style="color: #569cd6;">@title</span> <span style="color: #608b4e;">{{= title }}</span>
+<span style="color: #569cd6;">contract</span> <span style="color: #4ec9b0;">Token</span> {
+
+    <span style="color: #608b4e;">// Variables retrieved from parasol.js config file pre compilation</span>
+    <span style="color: #4ec9b0;">string</span> <span style="color: #569cd6;">private</span> name = <span style="color: #ce9178;">"{{= tokenName}}"</span>;
+    <span style="color: #4ec9b0;">string</span> <span style="color: #569cd6;">private</span> symbol = <span style="color: #ce9178;">"{{= tokenSymbol}}"</span>;
+    <span style="color: #4ec9b0;">uint8</span> <span style="color: #569cd6;">private</span> decimals = {{= tokenDecimals}};
+    <span style="color: #4ec9b0;">uint256</span> <span style="color: #569cd6;">private</span> totalSupply = {{= tokenSupply}}; 
+    <span style="color: #569cd6;">mapping</span> (<span style="color: #4ec9b0;">address</span> =&gt; <span style="color: #4ec9b0;">uint256</span>) <span style="color: #569cd6;">public</span> _balances;
+    <span style="color: #569cd6;">event</span> <span style="color: #4ec9b0;">Transfer</span>(<span style="color: #4ec9b0;">address</span> <span style="color: #569cd6;">indexed</span> _from, <span style="color: #4ec9b0;">address</span> <span style="color: #569cd6;">indexed</span> _to, <span style="color: #4ec9b0;">uint256</span> _value);
+    <span style="color: #569cd6;">constructor</span>() <span style="color: #569cd6;">public</span> {
+        _balances[<span style="color: #569cd6;">msg</span>.sender] = totalSupply;
+    }
+    <span style="color: #569cd6;">function</span> <span style="color: #dcdcaa;">transfer</span>(<span style="color: #4ec9b0;">address</span> _to, <span style="color: #4ec9b0;">uint256</span> _value) <span style="color: #569cd6;">public</span> <span style="color: #c586c0;">returns</span> (<span style="color: #4ec9b0;">bool</span> success) {
+        <span style="color: #c586c0;">...</span>
+    {{    
+        <span style="color: #608b4e;">// inline mocha unit test</span>
+        <span style="color: #dcdcaa;">test</span>(<span style="color: #569cd6;">this</span>, <span style="color: #ce9178;">'Balance should change balance after transfer()'</span>, async <span style="color: #dcdcaa;">function</span>() {
+            var preBalance = await contracts[<span style="color: #ce9178;">"Token.psol:Token"</span>].methods.<span style="color: #dcdcaa;">balanceOf</span>(accounts[0]).<span style="color: #dcdcaa;">call</span>()
+            await contracts[<span style="color: #ce9178;">"Token.psol:Token"</span>].methods.transfer(accounts[1], 1).send()
+            var postBalance = await contracts[<span style="color: #ce9178;">"Token.psol:Token"</span>].methods.<span style="color: #dcdcaa;">balanceOf</span>(accounts[0]).<span style="color: #dcdcaa;">call</span>()
+            <span style="color: #c586c0;">assert</span>.<span style="color: #dcdcaa;">notEqual</span>(preBalance, postBalance)
+        })    
+    }}
+    <span style="color: #608b4e;">// Preprocessor directive. Only compiles if in 'dev' network</span>
+    {{ <span style="color: #c586c0;">if</span> (network === <span style="color: #ce9178;">"dev"</span>) { }}
+        <span style="color: #569cd6;">function</span> <span style="color: #dcdcaa;">forceTransfer</span>(<span style="color: #4ec9b0;">address</span> _from, <span style="color: #4ec9b0;">address</span> _to, <span style="color: #4ec9b0;">uint256</span> _value) <span style="color: #569cd6;">public</span> <span style="color: #c586c0;">returns</span> (<span style="color: #4ec9b0;">bool</span> success) {
+            <span style="color: #c586c0;">require</span>(_balances[_from] &gt;= _value);
+            _balances[_from] -= _value;
+            _balances[_to] += _value;
+            <span style="color: #c586c0;">emit</span> <span style="color: #dcdcaa;">Transfer</span>(_from, _to, _value);
+            <span style="color: #c586c0;">return</span> <span style="color: #569cd6;">true</span>;
+        }
+    {{ } }}
+
+}</pre>
+          </section>
+          <button class="code-viewer">
+            <span class="icon codeIcon">
+              <i class="ion-md-eye"></i>
+            </span>
+            <p class="codeText">View full code</p>
+          </button>
+        </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
   </body>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://www.mattboldt.com/demos/typed-js/js/typed.custom.js"></script>
   <script src="https://bulma.io/vendor/clipboard-1.7.1.min.js"></script>
-
-  <script>
-  $("nav").find("a").click(function(e) {
-    var section = $(this).attr("href");
-    $("html, body").animate({
-        scrollTop: $(section).offset().top
-    });
-  });
-
-  var npmClipboard = new Clipboard('#npmCopy');
-
-  npmClipboard.on('success', function (e) {
-    e.trigger.innerText = 'copied!';
-    e.trigger.classList.add('is-success');
-    setTimeout(function () {
-      e.trigger.innerText = 'copy';
-      e.trigger.classList.remove('is-success');
-    }, 1500);
-    e.clearSelection();
-  });
-
-  npmClipboard.on('error', function (e) {
-    e.trigger.innerText = 'error!';
-    e.trigger.classList.add('is-error');
-    setTimeout(function () {
-      e.trigger.innerText = 'copy';
-      e.trigger.classList.remove('is-error');
-    }, 500);
-  });
-  // $( document ).ready(function() {
-  //   var clipboard = new Clipboard('#npmCopy');
-  // });
-
-  // $( document ).ready(function() {
-  // clipboard.on('success', function(e) {
-  //   $(e.trigger).text("Copied!");
-  //   e.clearSelection();
-  //   setTimeout(function() {
-  //     $(e.trigger).text("Copy");
-  //   }, 2500);
-  // });
-
-  // clipboard.on('error', function(e) {
-  //     $(e.trigger).text("Can't in Safari");
-  //     setTimeout(function() {
-  //       $(e.trigger).text("Copy");
-  //     }, 2500);
-  //   });
-  // });
-
-  $(function() {
-  var data = [
-  { 
-    action: 'type',
-    strings: ["npm install -g parasol^400"],
-    output: '<span class="gray">+ parasol@1.0.1</span><br><br>',
-    postDelay: 1000
-  },
-  { 
-    action: 'type',
-    strings: ["parasol init^400"],
-    output: '<span style="color:#00d137">✔ Parasol project created successfully!</span>',
-    postDelay: 1000
-  },
-  { 
-    action: 'type',
-    strings: ["clear^400"],
-    output: ' ',
-    postDelay: 1000
-  },
-  { 
-    action: 'type',
-    strings: ["parasol^400"],
-    output: $('.mimik-run-output').html(),
-    postDelay: 2000,
-    clear: true
-  },
-  { 
-    action: 'type',
-    strings: ["contracts['Token.psol:Token'].methods.transfer( accounts[1] , 5 ).send( { from: accounts[0] } )^700"],
-    output: $('.trans-run-output').html(),
-    postDelay: 2000
-  }
-];
-  runScripts(data, 0);
-});
-
-function runScripts(data, pos) {
-  var prompt = $('.prompt'),
-    script = data[pos];
-  if(script.clear === true) {
-    $('.history').html(''); 
-  }
-  switch(script.action) {
-    case 'type':
-      // cleanup for next execution
-      prompt.removeData();
-      $('.typed-cursor').text('');
-      prompt.typed({
-        strings: script.strings,
-        typeSpeed: 30,
-        callback: function() {
-          var history = $('.history').html();
-          history = history ? [history] : [];
-          history.push('$ ' + prompt.text());
-          if(script.output) {
-            history.push(script.output);
-            prompt.html('');
-            $('.history').html(history.join('<br>'));
-          }
-          // scroll to bottom of screen
-          $('section.terminal').scrollTop($('section.terminal').height());
-          // Run next script
-          pos++;
-          if(pos < data.length) {
-            setTimeout(function() {
-              runScripts(data, pos);
-            }, script.postDelay || 1000);
-          }
-        }
-      });
-      break;
-    case 'view':
-      break;
-  }
-}
-
-  function showOne() {
-    var dots = document.getElementById("dotsOne");
-    var moreText = document.getElementById("moreOne");
-    var btnText = document.getElementById("showBtnOne");
-
-    if (dots.style.display === "none") {
-      dots.style.display = "inline";
-      btnText.innerHTML = "Read more"; 
-      moreText.style.display = "none";
-    } else {
-      dots.style.display = "none";
-      btnText.innerHTML = "Read less"; 
-      moreText.style.display = "inline";
-    }
-  }
-  function showTwo() {
-    var dots = document.getElementById("dotsTwo");
-    var moreText = document.getElementById("moreTwo");
-    var btnText = document.getElementById("showBtnTwo");
-
-    if (dots.style.display === "none") {
-      dots.style.display = "inline";
-      btnText.innerHTML = "Read more"; 
-      moreText.style.display = "none";
-    } else {
-      dots.style.display = "none";
-      btnText.innerHTML = "Read less"; 
-      moreText.style.display = "inline";
-    }
-  }
-  function showThree() {
-    var dots = document.getElementById("dotsThree");
-    var moreText = document.getElementById("moreThree");
-    var btnText = document.getElementById("showBtnThree");
-
-    if (dots.style.display === "none") {
-      dots.style.display = "inline";
-      btnText.innerHTML = "Read more"; 
-      moreText.style.display = "none";
-    } else {
-      dots.style.display = "none";
-      btnText.innerHTML = "Read less"; 
-      moreText.style.display = "inline";
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    // Get all "navbar-burger" elements
-    var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-    // Check if there are any nav burgers
-    if ($navbarBurgers.length > 0) {
-
-      // Add a click event on each of them
-      $navbarBurgers.forEach(function ($el) {
-        $el.addEventListener('click', function () {
-
-          // Get the target from the "data-target" attribute
-          var target = $el.dataset.target;
-          var $target = document.getElementById(target);
-          var $navMenu = document.getElementById("navMenu");
-
-          // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-          $el.classList.toggle('is-active');
-          $navMenu.classList.toggle('is-active');
-
-        });
-      });
-    }
-
-    });
-    AOS.init();
-  </script>
+  <script src="js/bundle.js"></script>
 </html>
