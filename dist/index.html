@@ -179,12 +179,12 @@
     <section id="preprocessor"class="hero is-fullheight">
       <div class="hero-head">
         <center>
-          <h2 class="has-text-white headerText" style="margin-bottom: 0px">Built-in Solidity Preprocessor</h2>
+          <h2 class="has-text-white headerText headPreprocessor" style="margin-bottom: 0px">Built-in Solidity Preprocessor</h2>
           <p class="has-text-gray">Parasol has the first solidity preprocessor built-in by default</p>
         </center>
       </div>
       <div class="hero-body">
-        <div class="container" style="margin-top: -200px; max-width: 1000px">
+        <div class="container contPreprocessor">
             <div class="terminal-window-second">
               <header>
                 <div class="termButton green"></div>
@@ -193,50 +193,42 @@
                 <p class="filename">Token.psol</p>
               </header>
               <section class="terminal">
-<pre class="preTerminal"><span style="color: #C586C0;">pragma</span> <span style="color: #569CD6;">solidity</span> ^0.4.24;
+<pre class="preTerminal"><span style="color: #c586c0;">pragma</span> <span style="color: #569cd6;">solidity</span> ^0.4.24;
 
-{{ strict = <span style="color: #569CD6;">true</span> }} <span style="color: #608B4E;">// Activate strict mode. This will abort deployment on both errors and warnings.</span>
+{{ strict = <span style="color: #569cd6;">true</span> }} <span style="color: #608b4e;">// Activate strict mode. This will abort deployment on both errors and warnings.</span>
 
-<span style="color: #608B4E;">///</span> <span style="color: #569CD6;">@title</span> <span style="color: #608B4E;">{{= title }}</span>
-<span style="color: #569CD6;">contract</span> <span style="color: #4EC9B0;">Token</span> {
+<span style="color: #608b4e;">///</span> <span style="color: #569cd6;">@title</span> <span style="color: #608b4e;">{{= title }}</span>
+<span style="color: #569cd6;">contract</span> <span style="color: #4ec9b0;">Token</span> {
 
-    <span style="color: #608B4E;">// Variables retrieved from parasol.js config file pre compilation</span>
-    <span style="color: #4EC9B0;">string</span> <span style="color: #569CD6;">private</span> name = <span style="color: #CE9178;">"{{= tokenName}}"</span>;
-    <span style="color: #4EC9B0;">string</span> <span style="color: #569CD6;">private</span> symbol = <span style="color: #CE9178;">"{{= tokenSymbol}}"</span>;
-    <span style="color: #4EC9B0;">uint8</span> <span style="color: #569CD6;">private</span> decimals = {{= tokenDecimals}};
-    <span style="color: #4EC9B0;">uint256</span> <span style="color: #569CD6;">private</span> totalSupply = {{= tokenSupply}}; 
-    <span style="color: #569CD6;">mapping</span> (<span style="color: #4EC9B0;">address</span> =&gt; <span style="color: #4EC9B0;">uint256</span>) <span style="color: #569CD6;">public</span> _balances;
-    <span style="color: #569CD6;">event</span> <span style="color: #4EC9B0;">Transfer</span>(<span style="color: #4EC9B0;">address</span> <span style="color: #569CD6;">indexed</span> _from, <span style="color: #4EC9B0;">address</span> <span style="color: #569CD6;">indexed</span> _to, <span style="color: #4EC9B0;">uint256</span> _value);
-    <span style="color: #569CD6;">constructor</span>() <span style="color: #569CD6;">public</span> {
-        _balances[<span style="color: #569CD6;">msg</span>.sender] = totalSupply;
+    <span style="color: #608b4e;">// Variables retrieved from parasol.js config file pre compilation</span>
+    <span style="color: #4ec9b0;">string</span> <span style="color: #569cd6;">private</span> name = <span style="color: #ce9178;">"{{= tokenName}}"</span>;
+    <span style="color: #4ec9b0;">string</span> <span style="color: #569cd6;">private</span> symbol = <span style="color: #ce9178;">"{{= tokenSymbol}}"</span>;
+    <span style="color: #4ec9b0;">uint8</span> <span style="color: #569cd6;">private</span> decimals = {{= tokenDecimals}};
+    <span style="color: #4ec9b0;">uint256</span> <span style="color: #569cd6;">private</span> totalSupply = {{= tokenSupply}}; 
+    <span style="color: #569cd6;">mapping</span> (<span style="color: #4ec9b0;">address</span> =&gt; <span style="color: #4ec9b0;">uint256</span>) <span style="color: #569cd6;">public</span> _balances;
+    <span style="color: #569cd6;">event</span> <span style="color: #4ec9b0;">Transfer</span>(<span style="color: #4ec9b0;">address</span> <span style="color: #569cd6;">indexed</span> _from, <span style="color: #4ec9b0;">address</span> <span style="color: #569cd6;">indexed</span> _to, <span style="color: #4ec9b0;">uint256</span> _value);
+    <span style="color: #569cd6;">constructor</span>() <span style="color: #569cd6;">public</span> {
+        _balances[<span style="color: #569cd6;">msg</span>.sender] = totalSupply;
     }
-    <span style="color: #569CD6;">function</span> <span style="color: #DCDCAA;">transfer</span>(<span style="color: #4EC9B0;">address</span> _to, <span style="color: #4EC9B0;">uint256</span> _value) <span style="color: #569CD6;">public</span> <span style="color: #C586C0;">returns</span> (<span style="color: #4EC9B0;">bool</span> success) {
-        <span style="color: #C586C0;">require</span>(_balances[<span style="color: #569CD6;">msg</span>.sender] &gt;= _value);
-        _balances[<span style="color: #569CD6;">msg</span>.sender] -= _value;
-        _balances[_to] += _value;
-        <span style="color: #C586C0;">emit</span> <span style="color: #DCDCAA;">Transfer</span>(<span style="color: #569CD6;">msg</span>.sender, _to, _value);
-        <span style="color: #C586C0;">return</span> <span style="color: #569CD6;">true</span>;
-    }
+    <span style="color: #569cd6;">function</span> <span style="color: #dcdcaa;">transfer</span>(<span style="color: #4ec9b0;">address</span> _to, <span style="color: #4ec9b0;">uint256</span> _value) <span style="color: #569cd6;">public</span> <span style="color: #c586c0;">returns</span> (<span style="color: #4ec9b0;">bool</span> success) {
+        <span style="color: #c586c0;">...</span>
     {{    
-        <span style="color: #608B4E;">// inline mocha unit test</span>
-        <span style="color: #DCDCAA;">test</span>(<span style="color: #569CD6;">this</span>, <span style="color: #CE9178;">'Balance should change balance after transfer()'</span>, async <span style="color: #DCDCAA;">function</span>() {
-            var preBalance = await contracts[<span style="color: #CE9178;">"Token.psol:Token"</span>].methods.<span style="color: #DCDCAA;">balanceOf</span>(accounts[0]).<span style="color: #DCDCAA;">call</span>()
-            await contracts[<span style="color: #CE9178;">"Token.psol:Token"</span>].methods.transfer(accounts[1], 1).send()
-            var postBalance = await contracts[<span style="color: #CE9178;">"Token.psol:Token"</span>].methods.<span style="color: #DCDCAA;">balanceOf</span>(accounts[0]).<span style="color: #DCDCAA;">call</span>()
-            <span style="color: #C586C0;">assert</span>.<span style="color: #DCDCAA;">notEqual</span>(preBalance, postBalance)
+        <span style="color: #608b4e;">// inline mocha unit test</span>
+        <span style="color: #dcdcaa;">test</span>(<span style="color: #569cd6;">this</span>, <span style="color: #ce9178;">'Balance should change balance after transfer()'</span>, async <span style="color: #dcdcaa;">function</span>() {
+            var preBalance = await contracts[<span style="color: #ce9178;">"Token.psol:Token"</span>].methods.<span style="color: #dcdcaa;">balanceOf</span>(accounts[0]).<span style="color: #dcdcaa;">call</span>()
+            await contracts[<span style="color: #ce9178;">"Token.psol:Token"</span>].methods.transfer(accounts[1], 1).send()
+            var postBalance = await contracts[<span style="color: #ce9178;">"Token.psol:Token"</span>].methods.<span style="color: #dcdcaa;">balanceOf</span>(accounts[0]).<span style="color: #dcdcaa;">call</span>()
+            <span style="color: #c586c0;">assert</span>.<span style="color: #dcdcaa;">notEqual</span>(preBalance, postBalance)
         })    
     }}
-    function balanceOf(address _owner) constant public returns (uint256 balance) {
-        return _balances[_owner];
-    }
-    <span style="color: #608B4E;">// Preprocessor directive. Only compiles if in 'dev' network</span>
-    {{ if (network === <span style="color: #CE9178;">"dev"</span>) { }}
-        function forceTransfer(address _from, address _to, uint256 _value) public returns (bool success) {
-            require(_balances[_from] &gt;= _value);
+    <span style="color: #608b4e;">// Preprocessor directive. Only compiles if in 'dev' network</span>
+    {{ <span style="color: #c586c0;">if</span> (network === <span style="color: #ce9178;">"dev"</span>) { }}
+        <span style="color: #569cd6;">function</span> <span style="color: #dcdcaa;">forceTransfer</span>(<span style="color: #4ec9b0;">address</span> _from, <span style="color: #4ec9b0;">address</span> _to, <span style="color: #4ec9b0;">uint256</span> _value) <span style="color: #569cd6;">public</span> <span style="color: #c586c0;">returns</span> (<span style="color: #4ec9b0;">bool</span> success) {
+            <span style="color: #c586c0;">require</span>(_balances[_from] &gt;= _value);
             _balances[_from] -= _value;
             _balances[_to] += _value;
-            emit Transfer(_from, _to, _value);
-            return true;
+            <span style="color: #c586c0;">emit</span> <span style="color: #dcdcaa;">Transfer</span>(_from, _to, _value);
+            <span style="color: #c586c0;">return</span> <span style="color: #569cd6;">true</span>;
         }
     {{ } }}
 
@@ -255,7 +247,7 @@
                   <span class="icon footerIcon" style="font-size: 10rem; color: #e93544">
                     <i class="ion-logo-npm"></i>
                   </span>
-                  <pre id="npm" class="intro-npm" style="margin-top: -20px"><code>npm install -g parasol</code><code id="npmCopy" class="intro-npm-copy" data-clipboard-text="npm install parasol">copy</code></pre>
+                  <pre id="npm" class="intro-npm" style="margin-top: -20px"><code>npm install -g parasol-cli</code><code id="npmCopy" class="intro-npm-copy" data-clipboard-text="npm install parasol-cli">copy</code></pre>
                   <div class="divider"></div>
                   <pre id="npm" class="intro-npm"><code>mkdir token && cd token</code><code id="npmCopy" class="intro-npm-copy" data-clipboard-text="mkdir token && cd token">copy</code></pre>
                   <pre id="npm" class="intro-npm"><code>parasol init</code><code id="npmCopy" class="intro-npm-copy" data-clipboard-text="npm install parasol">copy</code></pre>
