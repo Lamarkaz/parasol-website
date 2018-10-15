@@ -12,3 +12,5 @@ Run the development environment
 - [ ] Mobile version
 - [x] PSOL Section
 - [x] Installation and Usage Section
+- [ ] Optimization, Minfication and Asset Compression
+- [ ] SEO
