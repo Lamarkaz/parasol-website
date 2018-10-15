@@ -4,7 +4,7 @@ $(document)
     .ready(function() {
       "use strict";
       
-      $("nav").find("a").click(function(e) {
+      $("nav .navbar-start").find("a").click(function(e) {
         var section = $(this).attr("href");
         $("html, body").animate({
             scrollTop: $(section).offset().top
