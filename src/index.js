@@ -44,8 +44,8 @@ $(document)
       var data = [
       { 
         action: 'type',
-        strings: ["npm install -g parasol^400"],
-        output: '<span class="gray">+ parasol@1.0.1</span><br><br>',
+        strings: ["npm install -g parasol-cli^400"],
+        output: '<span class="gray">+ parasol-cli@2.0.1</span><br><br>',
         postDelay: 1000
       },
       { 
